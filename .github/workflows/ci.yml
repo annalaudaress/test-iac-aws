@@ -19,10 +19,11 @@ jobs:
         run: terraform fmt -check -recursive
 
       - name: Terraform validate
+        working-directory: terraform
         run: |
-          cd terraform
           terraform init -backend=false
           terraform validate
+
 
   lint:
     runs-on: ubuntu-latest
@@ -35,13 +36,13 @@ jobs:
       - name: Install Ansible + ansible-lint
         run: |
           sudo apt update
-          sudo apt install ansible -y
-          pip install ansible-lint
+          sudo apt install -y ansible python3-pip
+          pip3 install ansible-lint
 
       - name: Run ansible-lint
-        run: |
-          cd ansible
-          ansible-lint || true
+        working-directory: ansible
+        run: ansible-lint
+
 
   zap_scan:
     runs-on: ubuntu-latest
