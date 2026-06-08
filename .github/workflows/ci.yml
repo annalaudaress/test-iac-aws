@@ -1,20 +1,55 @@
-lint:
-  runs-on: ubuntu-latest
-  needs: validate
+name: CI/CD Pipeline
 
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+on:
+  push:
+  pull_request:
 
-    - name: Debug repo structure
-      run: ls -R
+jobs:
 
-    - name: Install Ansible + ansible-lint
-      run: |
-        sudo apt update
-        sudo apt install -y ansible python3-pip
-        pip3 install ansible-lint
+  validate:
+    runs-on: ubuntu-latest
 
-    - name: Run ansible-lint
-      working-directory: ansible
-      run: ansible-lint
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform fmt check
+        run: terraform fmt -check -recursive
+
+      - name: Terraform validate
+        working-directory: terraform
+        run: |
+          terraform init -backend=false
+          terraform validate
+
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: validate
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Ansible + ansible-lint
+        run: |
+          sudo apt update
+          sudo apt install -y ansible python3-pip
+          pip3 install ansible-lint
+
+      - name: Run ansible-lint
+        run: ansible-lint ansible/
+
+
+  zap_scan:
+    runs-on: ubuntu-latest
+    needs: validate
+
+    steps:
+      - name: OWASP ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.10.0
+        with:
+          target: ${{ secrets.EC2_URL }}
