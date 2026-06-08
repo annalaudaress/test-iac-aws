@@ -1,18 +1,7 @@
 This project implements Infrastructure as Code (IaC) using Terraform, server configuration with Ansible, and a CI/CD pipeline using GitHub Actions, including validation steps and a security scan using OWASP ZAP.
 
-This project automates:
 
-AWS infrastructure provisioning using Terraform
-EC2 instance creation (Ubuntu)
-Server configuration using Ansible
-Application deployment (e.g., Keycloak via Docker)
-CI/CD validation using GitHub Actions
-Security scanning using OWASP ZAP (DAST)
 # 🚀 Test IaC AWS - Terraform + Ansible + CI/CD + ZAP
-
-This project implements **Infrastructure as Code (IaC)** using **Terraform**, server configuration with **Ansible**, and a **CI/CD pipeline using GitHub Actions**, including validation steps and a security scan using **OWASP ZAP**.
-
----
 
 ## 📌 Architecture Overview
 
@@ -25,6 +14,7 @@ This project automates:
 - CI/CD validation using GitHub Actions
 - Security scanning using OWASP ZAP (DAST)
 
+Created AWS Instance: 
 <img width="960" height="386" alt="instancia criada" src="https://github.com/user-attachments/assets/fe6c25c2-8fe9-4109-b9eb-316a91e7fa1b" />
 
 <img width="1651" height="552" alt="image" src="https://github.com/user-attachments/assets/562d4708-9bfa-465a-a27d-918f6394e135" />
