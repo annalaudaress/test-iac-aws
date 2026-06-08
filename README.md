@@ -16,6 +16,7 @@ This project automates:
 
 Created AWS Instance: 
 <img width="960" height="386" alt="instancia criada" src="https://github.com/user-attachments/assets/fe6c25c2-8fe9-4109-b9eb-316a91e7fa1b" />
+<img width="1900" height="442" alt="image" src="https://github.com/user-attachments/assets/2c58f0ec-36e9-4169-b49c-00fd7793f001" />
 
 <img width="1651" height="552" alt="image" src="https://github.com/user-attachments/assets/562d4708-9bfa-465a-a27d-918f6394e135" />
 <img width="1913" height="635" alt="image" src="https://github.com/user-attachments/assets/9bc0768f-2f03-4aa3-a26a-66e0dff3cb38" />
