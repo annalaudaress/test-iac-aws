@@ -12,4 +12,5 @@ resource "aws_instance" "keycloak" {
   tags = {
     Name = "keycloak-ec2"
   }
+
 }
